@@ -245,6 +245,15 @@ describe('CategoryOptions', () => {
     const wrapper = shallowMount(CategoryOptions);
     expect(wrapper.isVueInstance()).toBe(true);
   });
+  it('emits expected data', () => {
+    const wrapper = shallowMount(CategoryOptions);
+    const value = 'string';
+    wrapper.vm.$emit('input', value);
+
+    expect(wrapper.emitted().input).toBeTruthy();
+    expect(wrapper.emitted().input.length).toBe(1);
+    expect(wrapper.emitted().input[0]).toEqual([value]);
+  });
   const expectedFamilyTree = [
     { text: 'SCHOOL', value: 'd&WXdXWF' },
     { text: 'ARTS', value: 'd&WXdXWF.5QAjgfv7' },
